@@ -128,3 +128,35 @@ ALTER Table user1 ADD Constraint unique_email UNIQUE(email);
 ALTER Table user1 DROP Constraint unique_email;
 
 SELECT * from user1 
+
+--## adding foreign KEY
+
+-- creating a department table. each department has many employees
+
+CREATE TABLE
+    Department(
+        deptID SERIAL PRIMARY key,
+        deptName VARCHAR(50)
+    );
+
+-- creating an employee TABLE, each employee belongs to a department
+
+CREATE table
+    Employee(
+        empID SERIAL PRIMARY KEY,
+        empName VARCHAR(50) NOT NULL,
+        departmentID INT,
+        CONSTRAINT fk_constraint_dept FOREIGN KEY (departmentID) REFERENCES Department(deptID)
+    );
+
+--insert into department table
+
+INSERT INTO Department VALUES(1,'IT');
+
+SELECT * FROM Department;
+
+--insert in employee TABLE
+
+INSERT INTO Employee values(1,'soya',1) 
+
+SELECT * from Employee 
