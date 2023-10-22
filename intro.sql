@@ -160,3 +160,52 @@ SELECT * FROM Department;
 INSERT INTO Employee values(1,'soya',1) 
 
 SELECT * from Employee 
+
+--## update and delete
+
+CREATE table
+    courses(
+        course_id SERIAL PRIMARY KEY,
+        course_name VARCHAR(255) NOT NUll,
+        description VARCHAR(255),
+        published_date DATE
+    );
+
+--Date format : YYYY-MM-DD
+
+INSERT INTO
+    courses(
+        course_name,
+        description,
+        published_date
+    )
+values (
+        'PostgreSQL for developers',
+        'A complete PostgreSQL for Developers',
+        '2020-07-13'
+    ), (
+        'PostgreSQL Administration',
+        'A postgreSQL Guide for DBA',
+        NULL
+    ), (
+        'PostgreSQL HIgh Performance',
+        NULL,
+        NULL
+    ), (
+        'PostgreSQL Bootcamp',
+        'Learn Postgre via Bootcamp',
+        '2013-07-11'
+    ), (
+        'Mastering PostgreSQL',
+        'Mastering POstgreSQL in 21 days',
+        '2012-06-30'
+    );
+
+--update database table row
+
+UPDATE courses
+SET
+    description = 'Mastering PostgreSQL in 21 days'
+WHERE course_id = 5;
+
+SELECT * from courses 
